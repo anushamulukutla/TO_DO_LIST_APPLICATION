@@ -1,0 +1,60 @@
+#OMSAIRAM
+# Initialize an empty dictionary to store tasks with their completion status
+task_dict = {}
+
+# Function to add a task
+def add_task(task_name):
+    # Assign 'Pending' as the default status of the task
+    task_dict[task_name] = 'Pending'
+    print("Task added successfully.")
+
+# Function to remove a task
+def remove_task(task_name):
+    if task_name in task_dict:
+        del task_dict[task_name]
+        print("Task removed successfully.")
+    else:
+        print("Task not found! Please enter a valid task name.")
+
+# Function to mark a task as complete
+def mark_complete(task_name):
+    if task_name in task_dict:
+        task_dict[task_name] = 'Complete'
+        print("Task marked as complete.")
+    else:
+        print("Task not found! Please enter a valid task name.")
+
+# Function to view all tasks
+def view_tasks():
+    if task_dict:
+        for task, status in task_dict.items():
+            print(task,":",status)
+    else:
+        print("No tasks found!")
+# Main function to drive the program
+def main():
+    print("\t*** TO-DO LIST APPLICATION BY ANUSHA***")
+    print("Options: 1. Add Task  2. Remove Task  3. View Tasks  4. Mark Task Complete  5. Exit")
+    
+    while True:
+        user_choice = input("Please select an option by number (e.g., 1/ADDTASK): ")
+        
+        if user_choice in ['1', 'ADDTASK']:
+            task_name = input("Enter the task to be added: ")
+            add_task(task_name)
+        elif user_choice in ['2', 'REMOVETASK']:
+            task_name = input("Enter the task to be removed: ")
+            remove_task(task_name)
+        elif user_choice in ['3', 'VIEWTASK']:
+            view_tasks()
+        elif user_choice in ['4', 'MARKCOMPLETETASK']:
+            task_name = input("Enter the task to mark as complete: ")
+            mark_complete(task_name)
+        elif user_choice in ['5', 'Exit']:
+            print("Exiting application.")
+            break
+        else:
+            print("Invalid input! Please enter a number between 1 and 5.")
+
+if __name__ == "__main__":
+    main()
